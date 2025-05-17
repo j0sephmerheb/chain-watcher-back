@@ -1,1 +1,3 @@
 INSERT INTO `crypto`.`alert` (`id`, `coin`, `percentage`, `direction`, `createdAt`, `active`) VALUES ('1', 'binancecoin', '1', 'up', '2025-05-17 12:52:58', 1)
+INSERT INTO `crypto`.`alert` (`id`, `coin`, `percentage`, `direction`, `createdAt`, `active`) VALUES ('2', 'ethereum', '3', 'up', '2025-05-16 1:52:58', 1)
+INSERT INTO `crypto`.`alert` (`id`, `coin`, `percentage`, `direction`, `createdAt`, `active`) VALUES ('3', 'bitcoin', '10', 'up', '2025-05-14 3:52:58', 1)
