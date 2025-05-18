@@ -8,6 +8,11 @@ export class TelegramService {
 
   constructor(private http: HttpService, private configService: ConfigService) {}
 
+  /**
+   * Sends a message to a Telegram chat using the Telegram Bot API.
+   * 
+   * @param text - The message text to be sent.
+   */
   async sendMessage(text: string) {
     const token = this.configService.get<string>('TELEGRAM_BOT_TOKEN');
     const chatId = this.configService.get<string>('TELEGRAM_CHAT_ID');

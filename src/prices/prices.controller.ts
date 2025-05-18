@@ -9,11 +9,23 @@ export class PricesController {
     private readonly alertsService: AlertsService
   ) {}
 
+  /**
+   * Retrieves the prices for a specific cryptocurrency.
+   *
+   * @param coin - The symbol of the cryptocurrency to fetch prices for.
+   * @returns The price data for the specified cryptocurrency.
+   */
   @Get(":coin")
   getPrices(@Param("coin") coin: string) {
     return this.service.fetchPrices(coin);
   }
 
+  /**
+   * Retrieves the prices for a specific cryptocurrency and checks for alerts.
+   *
+   * @param coin - The symbol of the cryptocurrency to fetch prices for.
+   * @returns An object containing price data, alert results, and all alerts for the cryptocurrency.
+   */
   @Get("combined/:coin")
   async getPricesAndCheckAlerts(@Param("coin") coin: string) {
     const priceData = await this.service.fetchPrices(coin);

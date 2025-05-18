@@ -7,6 +7,13 @@ import * as dayjs from 'dayjs';
 export class PricesService {
   constructor(private http: HttpService) {}
 
+  /**
+   * Fetches the price data for a specific cryptocurrency from the CoinGecko API.
+   *
+   * @param coin - The symbol of the cryptocurrency to fetch prices for.
+   * @returns An object containing cleaned price data, the first and last prices,
+   *          the percentage change, and the price direction (up or down).
+   */
   async fetchPrices(coin: string) {
     const { data } = await firstValueFrom(
       this.http.get(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=1`)

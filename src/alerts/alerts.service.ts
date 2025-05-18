@@ -43,6 +43,14 @@ export class AlertsService {
     return this.alertRepo.save(alert);
   }
 
+  /**
+   * Checks and triggers alerts for a specific cryptocurrency based on its price data.
+   *
+   * @param coin - The symbol of the cryptocurrency to check alerts for.
+   * @param priceData - The price data of the cryptocurrency.
+   * @returns An object containing the coin, current percentage change, direction,
+   *          and the list of triggered alerts.
+   */
   async checkAndTriggerAlerts(coin: string, priceData: any) {
     if (!priceData?.prices?.length) {
       return { message: "No price data found" };
@@ -91,6 +99,12 @@ export class AlertsService {
     };
   }
 
+  /**
+   * Checks and triggers alerts for all active alerts across all cryptocurrencies.
+   *
+   * @returns An array of results containing the coin, current percentage change,
+   *          direction, and the list of triggered alerts for each cryptocurrency.
+   */
   async checkAndTriggerAllAlerts() {
     const activeAlerts = await this.alertRepo.find({ where: { active: true } });
 
