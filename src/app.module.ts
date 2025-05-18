@@ -1,14 +1,18 @@
+// app.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { HttpModule } from '@nestjs/axios';
 import { Alert } from './alerts/alert.entity';
-import { PricesService } from './prices/prices.service';
-import { PricesController } from './prices/prices.controller';
-import { TelegramService } from './telegram/telegram.service';
 import { AlertsModule } from './alerts/alerts.module';
+import { PricesModule } from './prices/prices.module';
+import { TelegramModule } from './telegram/telegram.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true, // makes ConfigService available everywhere
+    }),
     HttpModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -20,10 +24,9 @@ import { AlertsModule } from './alerts/alerts.module';
       entities: [Alert],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Alert]),
     AlertsModule,
+    PricesModule,
+    TelegramModule,
   ],
-  controllers: [PricesController],
-  providers: [PricesService, TelegramService],
 })
 export class AppModule {}
