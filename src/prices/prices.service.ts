@@ -14,7 +14,7 @@ export class PricesService {
 
     const cleaned = data.prices
       .map(([timestamp, price]) => ({
-        time: dayjs(timestamp).format("YYYY-MM-DD  HH:mm"),
+        time: dayjs(timestamp).format("HH:mm"),
         price: +price.toFixed(3),
       }))
       .filter((_, i) => i % 5 === 0);

@@ -41,10 +41,8 @@ export class AlertsService {
     return this.alertRepo.save(alert);
   }
 
-  async checkAndTriggerAlerts(coin: string) {
-    const priceData = await this.pricesService.fetchPrices(coin);
-  
-    if (!priceData?.prices.length) {
+  async checkAndTriggerAlerts(coin: string, priceData: any) {
+    if (!priceData?.prices?.length) {
       return { message: 'No price data found' };
     }
   
@@ -68,7 +66,12 @@ export class AlertsService {
       }));
     }
   
-    return { coin, currentPercentage: percentage, direction, triggeredAlerts };
+    return {
+      coin,
+      currentPercentage: percentage,
+      direction,
+      triggeredAlerts
+    };
   }
   
   async checkAndTriggerAllAlerts() {
@@ -123,6 +126,4 @@ export class AlertsService {
   
     return results;
   }
-  
-  
 }

@@ -39,11 +39,6 @@ export class AlertsController {
   toggleAlert(@Param('id') id: number) {
     return this.alertsService.toggleActive(id);
   }
-
-  @Get('check-active')
-  async checkActiveAlerts(@Query('coin') coin: string) {
-    return this.alertsService.checkAndTriggerAlerts(coin);
-  }
   
   @Get('check-trigger-all')
   async checkAndTriggerAll() {

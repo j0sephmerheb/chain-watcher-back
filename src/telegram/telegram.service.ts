@@ -4,8 +4,8 @@ import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class TelegramService {
-  private readonly token = 'YOUR_BOT_TOKEN';
-  private readonly chatId = 'YOUR_CHAT_ID';
+  private readonly token = 'BOT_TOKEN';
+  private readonly chatId = 'CHAT_ID';
 
   constructor(private http: HttpService) {}
 
